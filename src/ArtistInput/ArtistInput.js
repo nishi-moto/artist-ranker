@@ -28,16 +28,18 @@ class ArtistInput extends Component {
   }
 
   handleSubmit() {
-    const { input } = this.state;
-    if (this.validateInput()) {
-      console.log(input);
+    if (!this.validateInput()) {
+      return;
     }
+    const { input } = this.state;
+    const { addArtist } = this.context;
+    addArtist(input);
+    this.setState({ input: '' });
   }
 
   render() {
     const { message } = this.state;
     const { input } = this.state;
-    console.log('context', this.context);
     return (
       <div className="ArtistAdder">
         <p>What are you looking for?</p>
