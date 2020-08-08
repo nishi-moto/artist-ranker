@@ -16,6 +16,18 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    const artists = JSON.parse(localStorage.getItem('artists'));
+    if (artists) {
+      this.setState({ artists });
+    }
+  }
+
+  componentDidUpdate() {
+    const { artists } = this.state;
+    localStorage.setItem('artists', JSON.stringify(artists));
+  }
+
   addArtist(artist) {
     const { artists } = this.state;
     const newArtist = {
@@ -25,8 +37,6 @@ class App extends Component {
       pictureURL: '',
     };
     const newArtistList = [...artists, newArtist];
-    // localStorage.setItem('artists', JSON.stringify(newArtistList));
-    // console.log(localStorage);
     this.setState({ artists: newArtistList });
   }
 
@@ -43,13 +53,10 @@ class App extends Component {
       }
       return person;
     });
-    // localStorage.setItem('artists', JSON.stringify(newArtistList));
-    // // console.log(localStorage);
     this.setState({ artists: updatedArtists });
   }
 
   render() {
-    // console.log('here', this.state);
     return (
       <ArtistContext.Provider value={this.state}>
         <div className="App">
@@ -59,6 +66,7 @@ class App extends Component {
           </header>
           <section>
             <ArtistInput />
+            <h3>Ranking List</h3>
             <ArtistsList />
           </section>
         </div>

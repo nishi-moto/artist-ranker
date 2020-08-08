@@ -40,7 +40,7 @@ class Artist extends Component {
         &nbsp;
         {artist.stars}
         &nbsp;stars
-        <button type="button" id="increment" onClick={this.increment}> +</button>
+        <button type="button" id="increment" onClick={this.increment}> + </button>
         <button type="button" id="decrement" onClick={this.decrement}> - </button>
       </div>
     );

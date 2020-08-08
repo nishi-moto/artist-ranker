@@ -24,7 +24,6 @@ class ArtistsList extends Component {
         </div>
       );
     }
-    console.log(artistList);
     return (
       artistList.map(artist => <Artist key={artist.id} artist={artist} />)
     );
