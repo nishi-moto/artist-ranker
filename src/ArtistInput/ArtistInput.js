@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ArtistContext from '../ArtistContext';
 
 class ArtistInput extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class ArtistInput extends Component {
   render() {
     const { message } = this.state;
     const { input } = this.state;
+    console.log('context', this.context);
     return (
       <div className="ArtistAdder">
         <p>What are you looking for?</p>
@@ -54,5 +56,7 @@ class ArtistInput extends Component {
     );
   }
 }
+
+ArtistInput.contextType = ArtistContext;
 
 export default ArtistInput;
