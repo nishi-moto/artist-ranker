@@ -5,24 +5,43 @@ import ArtistContext from '../ArtistContext';
 class Artist extends Component {
   constructor(props) {
     super(props);
-    this.updateArtist = this.updateArtist.bind(this);
+    this.update = this.update.bind(this);
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
   }
 
-  updateArtist() {
-    // implement
+  update() {
     const { artist } = this.props;
-    return artist;
+    const { updateArtist } = this.context;
+    updateArtist(artist);
+  }
+
+  increment() {
+    const { artist } = this.props;
+    artist.stars += 1;
+    this.update();
+  }
+
+  decrement() {
+    const { artist } = this.props;
+    if (artist.stars > 0) {
+      artist.stars -= 1;
+      this.update();
+    }
   }
 
   render() {
-    // const artist = this.updateArtist();
     const { artist } = this.props;
 
     return (
       <div>
         {artist.pictureURL}
         {artist.name}
+        &nbsp;
         {artist.stars}
+        &nbsp;stars
+        <button type="button" id="increment" onClick={this.increment}> +</button>
+        <button type="button" id="decrement" onClick={this.decrement}> - </button>
       </div>
     );
   }
@@ -30,6 +49,7 @@ class Artist extends Component {
 
 Artist.propTypes = {
   artist: PropTypes.shape({
+    id: PropTypes.string,
     name: PropTypes.string,
     stars: PropTypes.number,
     pictureURL: PropTypes.string,

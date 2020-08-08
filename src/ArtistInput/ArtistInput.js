@@ -33,7 +33,7 @@ class ArtistInput extends Component {
     }
     const { input } = this.state;
     const { addArtist } = this.context;
-    addArtist(input);
+    addArtist({ name: input });
     this.setState({ input: '' });
   }
 
