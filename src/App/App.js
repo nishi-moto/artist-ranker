@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ArtistInput from '../ArtistInput/ArtistInput';
 import ArtistContext from '../ArtistContext';
+import ArtistsList from '../ArtistsList/ArtistList';
 
 class App extends Component {
   constructor(props) {
@@ -15,11 +16,19 @@ class App extends Component {
 
   addArtist(artist) {
     const { artists } = this.state;
-    this.setState({ artists: [...artists, artist] });
+    const newArtist = {
+      name: artist,
+      stars: 0,
+      pictureURL: '',
+    };
+    const newArtistList = [...artists, newArtist];
+    localStorage.setItem('artists', JSON.stringify(newArtistList));
+    // console.log(localStorage);
+    this.setState({ artists: newArtistList });
   }
 
   render() {
-    console.log('here', this.state);
+    // console.log('here', this.state);
     return (
       <ArtistContext.Provider value={this.state}>
         <div className="App">
@@ -29,13 +38,12 @@ class App extends Component {
           </header>
           <section>
             <ArtistInput />
+            <ArtistsList />
           </section>
         </div>
       </ArtistContext.Provider>
     );
-
   }
-
 }
 
 export default App;

@@ -42,7 +42,7 @@ class ArtistInput extends Component {
     const { input } = this.state;
     return (
       <div className="ArtistAdder">
-        <p>What are you looking for?</p>
+        <p>Artist&apos;s name:</p>
         <input
           name="addArtistInput"
           type="text"
