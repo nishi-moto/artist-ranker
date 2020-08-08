@@ -10,9 +10,7 @@ class ArtistsList extends Component {
 
   sortArtists() {
     const { artists } = this.context;
-    // sort artists by stars
-    console.log('list', artists);
-    return artists;
+    return artists.sort((a, b) => (b.stars - a.stars));
   }
 
   render() {
