@@ -39,16 +39,26 @@ class Artist extends Component {
       img = <img alt={artist.name} src={artist.pictureURL} className="artistImage" />;
     }
     return (
-      <div>
-        {img}
-        <Link to={`/artist/${artist.id}`}>
-          {artist.name}
-        </Link>
-        &nbsp;
-        {artist.stars}
-        &nbsp;stars
-        <button type="button" id="increment" onClick={this.increment}> + </button>
-        <button type="button" id="decrement" onClick={this.decrement}> - </button>
+      <div className="artistWrap">
+        <div>
+          {img}
+        </div>
+        <div>
+          <div>
+            <Link to={`/artist/${artist.id}`}>
+              {artist.name}
+            </Link>
+          </div>
+          <div>
+            &nbsp;
+            {artist.stars}
+          &nbsp;stars
+          </div>
+          <div>
+            <button type="button" id="increment" onClick={this.increment}> + </button>
+            <button type="button" id="decrement" onClick={this.decrement}> - </button>
+          </div>
+        </div>
       </div>
     );
   }
