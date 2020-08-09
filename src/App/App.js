@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-// import logo from './logo.svg';
 import './App.css';
-import { Route } from 'react-router-dom';
-import ArtistInput from '../ArtistInput/ArtistInput';
+import Router from '../Router/Router';
+
 import ArtistContext from '../ArtistContext';
-import ArtistsList from '../ArtistsList/ArtistList';
-import ArtistDetails from '../ArtistDetails/ArtistDetails';
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +11,7 @@ class App extends Component {
     this.state = {
       addArtist: this.addArtist.bind(this),
       updateArtist: this.updateArtist.bind(this),
+      getArtistbyID: this.getArtistbyID.bind(this),
       artists: [],
     };
   }
@@ -27,7 +25,14 @@ class App extends Component {
 
   componentDidUpdate() {
     const { artists } = this.state;
-    localStorage.setItem('artists', JSON.stringify(artists));
+    if (artists) {
+      localStorage.setItem('artists', JSON.stringify(artists));
+    }
+  }
+
+  getArtistbyID(id) {
+    const { artists } = this.state;
+    return artists.filter(artist => artist.id === id)[0];
   }
 
   addArtist(artist) {
@@ -62,15 +67,7 @@ class App extends Component {
     return (
       <ArtistContext.Provider value={this.state}>
         <div className="App">
-          <header className="Header">
-            {/* <img src={logo} className="App-logo" alt="logo" /> */}
-            <h1> Artist Ranker </h1>
-          </header>
-          <section>
-            <ArtistInput />
-            <h3>Ranking List</h3>
-            <ArtistsList />
-          </section>
+          <Router />
         </div>
       </ArtistContext.Provider>
     );

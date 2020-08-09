@@ -6,13 +6,13 @@ class ArtistDetails extends Component {
   constructor(props) {
     super(props);
     this.update = this.update.bind(this);
+    this.getArtist = this.getArtist.bind(this);
   }
 
-  componentDidMount() {
+  getArtist() {
     const { match } = this.props;
-    const { artists } = this.context;
-    console.log(artists);
-    // const { id } = this.props.match.params;
+    const { getArtistbyID } = this.context;
+    return getArtistbyID(match.params.id);
   }
 
   update() {
@@ -22,9 +22,29 @@ class ArtistDetails extends Component {
   }
 
   render() {
+    const artist = this.getArtist();
+    console.log(artist);
+    if(typeof artist === 'undefined') {
+      return(
+        <div>
+          Ops, something wrong happened!
+        </div>
+      );
+    }
     return (
       <div>
-        Here!
+        <div>
+          <h3>Artist Page</h3>
+          Name:
+          {artist.name}
+          Stars:
+          {artist.stars}
+          PictURL:
+          {artist.pictureURL}
+        </div>
+        <button id="back" type="button">Back</button>
+        <button id="save" type="button">Save</button>
+
       </div>
     );
   }

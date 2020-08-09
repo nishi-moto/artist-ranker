@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import App from '../App/App';
+import Home from '../Home/Home';
 import ArtistDetails from '../ArtistDetails/ArtistDetails';
 
 function Router() {
@@ -12,7 +12,7 @@ function Router() {
           component={ArtistDetails} />
         <Route
           path="/"
-          component={App} />
+          component={Home} />
       </Switch>
     </div>
   );
