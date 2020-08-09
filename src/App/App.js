@@ -71,9 +71,6 @@ class App extends Component {
             <h3>Ranking List</h3>
             <ArtistsList />
           </section>
-          {/* <Route
-            path="/artist/:id"
-            component={ArtistDetails} /> */}
         </div>
       </ArtistContext.Provider>
     );

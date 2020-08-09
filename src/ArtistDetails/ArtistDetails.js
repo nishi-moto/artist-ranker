@@ -8,6 +8,13 @@ class ArtistDetails extends Component {
     this.update = this.update.bind(this);
   }
 
+  componentDidMount() {
+    const { match } = this.props;
+    const { artists } = this.context;
+    console.log(artists);
+    // const { id } = this.props.match.params;
+  }
+
   update() {
     const { artist } = this.props;
     const { updateArtist } = this.context;
