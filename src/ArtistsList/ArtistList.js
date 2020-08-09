@@ -9,7 +9,8 @@ class ArtistsList extends Component {
   }
 
   sortArtists() {
-    const { artists } = this.context;
+    const { state } = this.context;
+    const { artists } = state;
     return artists.sort((a, b) => (b.stars - a.stars));
   }
 

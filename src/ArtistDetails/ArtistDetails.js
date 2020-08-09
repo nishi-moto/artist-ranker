@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ArtistContext from '../ArtistContext';
 import { Link } from 'react-router-dom';
+import ArtistContext from '../ArtistContext';
 
 class ArtistDetails extends Component {
   constructor(props) {
@@ -160,10 +160,16 @@ ArtistDetails.propTypes = {
     stars: PropTypes.number,
     pictureURL: PropTypes.string,
   }),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
 };
 
 ArtistDetails.defaultProps = {
   artist: {},
+  match: {},
 };
 
 ArtistDetails.contextType = ArtistContext;

@@ -9,9 +9,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addArtist: this.addArtist.bind(this),
-      updateArtist: this.updateArtist.bind(this),
-      getArtistbyID: this.getArtistbyID.bind(this),
       artists: [],
     };
   }
@@ -65,7 +62,12 @@ class App extends Component {
 
   render() {
     return (
-      <ArtistContext.Provider value={this.state}>
+      <ArtistContext.Provider value={{
+        state: this.state,
+        addArtist: this.addArtist.bind(this),
+        updateArtist: this.updateArtist.bind(this),
+        getArtistbyID: this.getArtistbyID.bind(this),
+      }}>
         <div className="App">
           <Menu />
         </div>
