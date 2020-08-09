@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
-import Router from '../Router/Router';
+import Menu from '../Menu/Menu';
 
 import ArtistContext from '../ArtistContext';
 
@@ -67,7 +67,7 @@ class App extends Component {
     return (
       <ArtistContext.Provider value={this.state}>
         <div className="App">
-          <Router />
+          <Menu />
         </div>
       </ArtistContext.Provider>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ArtistContext from '../ArtistContext';
+import { Link } from 'react-router-dom';
 
 class ArtistDetails extends Component {
   constructor(props) {
@@ -143,9 +144,10 @@ class ArtistDetails extends Component {
           </div>
 
         </div>
-        <button id="back" type="button">Back</button>
+        <Link to="/">
+          <button id="back" type="button" onClick={this.handleClick}>Back</button>
+        </Link>
         <button id="save" type="button" onClick={this.handleSubmit}>Save</button>
-
       </div>
     );
   }
