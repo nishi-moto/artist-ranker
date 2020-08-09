@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ArtistContext from '../ArtistContext';
+// import defaultPic from './default.jpg';
 import './Artist.css';
 
 class Artist extends Component {
@@ -34,10 +35,13 @@ class Artist extends Component {
 
   render() {
     const { artist } = this.props;
-
+    let img = <img alt={artist.name} src='./default.jpg' className="artistImage" />;;
+    if (artist.pictureURL !== '') {
+      img = <img alt={artist.name} src={artist.pictureURL} className="artistImage" />;
+    }
     return (
       <div>
-        <img alt={artist.name} src={artist.pictureURL} className="artistImage" />
+        {img}
         <Link to={`/artist/${artist.id}`}>
           {artist.name}
         </Link>
