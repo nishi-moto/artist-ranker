@@ -16,9 +16,16 @@ class ArtistDetails extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onInputNameChange = this.onInputNameChange.bind(this);
-    this.onInputNameChange = this.onInputNameChange.bind(this);
+    this.onInputImageChange = this.onInputImageChange.bind(this);
     this.validateInputName = this.validateInputName.bind(this);
     this.validateInputImage = this.validateInputImage.bind(this);
+  }
+
+  componentDidMount() {
+    // const artist = this.getArtist();
+    // console.log(artist);
+    // this.setState( {inputArtist: artist.name} );
+    // return artist;
   }
 
   onInputNameChange(event) {
@@ -43,8 +50,12 @@ class ArtistDetails extends Component {
 
   validateInputName() {
     const { inputName } = this.state;
-    if (inputName === '') {
-      this.setState({ messageName: 'Please provide a name.' });
+
+    const regEx = /['"]/g;
+    const valid = regEx.test(inputName);
+
+    if (valid) {
+      this.setState({ messageName: 'Please provide a valid name.' });
       return false;
     }
     this.setState({ messageName: '' });
@@ -52,29 +63,48 @@ class ArtistDetails extends Component {
   }
 
   validateInputImage() {
-    // const { inputImage } = this.state;
-    // if (input === '') {
-    //   this.setState({ message: 'Please provide a name.' });
-    //   return false;
-    // }
-    // this.setState({ message: '' });
-    // return true;
+    const { inputImage } = this.state;
+
+    const regEx = /[\w-?&#]\.(gif|jpg|jpeg|tiff|png)$/i;
+    const valid = regEx.test(inputImage);
+
+    if (!valid && inputImage.length > 0) {
+      this.setState({ messageImage: 'Please provide a valid URL.' });
+      return false;
+    }
+    this.setState({ messageImage: '' });
+    return true;
   }
 
   handleSubmit() {
-    if (!this.validateInputName()) {
+    if (!this.validateInputName() || !this.validateInputImage()) {
       return;
     }
     const artist = this.getArtist();
+
+    // name
     const { inputName } = this.state;
-    artist.name = inputName;
-    this.update();
+    if (inputName.length > 0) {
+      artist.name = inputName;
+      this.update();
+      this.setState({ inputName: '' });
+    }
+
+    // image
+    const { inputImage } = this.state;
+    if (inputImage.length > 0) {
+      artist.pictureURL = inputImage;
+      this.update();
+      this.setState({ inputImage: '' });
+    }
   }
 
   render() {
     const artist = this.getArtist();
     const { messageName } = this.state;
     const { inputName } = this.state;
+    const { messageImage } = this.state;
+    const { inputImage } = this.state;
 
     if (typeof artist === 'undefined') {
       return (
@@ -90,7 +120,7 @@ class ArtistDetails extends Component {
           <p>
             Name:
             <input
-              name="nameInput"
+              name="inputName"
               type="text"
               value={inputName}
               onChange={this.onInputNameChange}
@@ -102,12 +132,15 @@ class ArtistDetails extends Component {
           <p>
             PictURL:
             <input
-              name="nameInput"
+              name="inputImage"
               type="text"
-              // value=""
+              value={inputImage}
               onChange={this.onInputImageChange}
               placeholder={artist.pictureURL} />
           </p>
+          <div name="MessageName">
+            {messageImage}
+          </div>
 
         </div>
         <button id="back" type="button">Back</button>
