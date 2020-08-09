@@ -55,7 +55,7 @@ class App extends Component {
           id: artist.id,
           name: artist.name,
           stars: artist.stars,
-          pictureURL: artist.picture,
+          pictureURL: artist.pictureURL,
         };
       }
       return person;

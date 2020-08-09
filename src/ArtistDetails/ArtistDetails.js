@@ -65,7 +65,7 @@ class ArtistDetails extends Component {
   validateInputImage() {
     const { inputImage } = this.state;
 
-    const regEx = /[\w-?&#]\.(gif|jpg|jpeg|tiff|png)$/i;
+    const regEx = /\.(gif|jpg|jpeg|tiff|png)$/i;
     const valid = regEx.test(inputImage);
 
     if (!valid && inputImage.length > 0) {

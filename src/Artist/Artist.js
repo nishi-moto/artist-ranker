@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ArtistContext from '../ArtistContext';
+import './Artist.css';
 
 class Artist extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Artist extends Component {
 
     return (
       <div>
-        {artist.pictureURL}
+        <img alt={artist.name} src={artist.pictureURL} className="artistImage" />
         <Link to={`/artist/${artist.id}`}>
           {artist.name}
         </Link>
