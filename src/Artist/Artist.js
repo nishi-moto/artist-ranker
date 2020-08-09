@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import ArtistContext from '../ArtistContext';
 
 class Artist extends Component {
@@ -36,7 +37,9 @@ class Artist extends Component {
     return (
       <div>
         {artist.pictureURL}
-        {artist.name}
+        <Link to={`/artist/${artist.id}`}>
+          {artist.name}
+        </Link>
         &nbsp;
         {artist.stars}
         &nbsp;stars

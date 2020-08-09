@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 // import logo from './logo.svg';
 import './App.css';
+import { Route } from 'react-router-dom';
 import ArtistInput from '../ArtistInput/ArtistInput';
 import ArtistContext from '../ArtistContext';
 import ArtistsList from '../ArtistsList/ArtistList';
+import ArtistDetails from '../ArtistDetails/ArtistDetails';
 
 class App extends Component {
   constructor(props) {
@@ -69,6 +71,9 @@ class App extends Component {
             <h3>Ranking List</h3>
             <ArtistsList />
           </section>
+          {/* <Route
+            path="/artist/:id"
+            component={ArtistDetails} /> */}
         </div>
       </ArtistContext.Provider>
     );
