@@ -22,13 +22,6 @@ class ArtistDetails extends Component {
     this.validateInputImage = this.validateInputImage.bind(this);
   }
 
-  componentDidMount() {
-    // const artist = this.getArtist();
-    // console.log(artist);
-    // this.setState( {inputArtist: artist.name} );
-    // return artist;
-  }
-
   onInputNameChange(event) {
     this.setState({ inputName: event.target.value });
   }
@@ -147,7 +140,9 @@ class ArtistDetails extends Component {
         <Link to="/">
           <button id="back" type="button" onClick={this.handleClick}>Back</button>
         </Link>
-        <button id="save" type="button" onClick={this.handleSubmit}>Save</button>
+        <Link to="/">
+          <button id="save" type="button" onClick={this.handleSubmit}>Save</button>
+        </Link>
       </div>
     );
   }
