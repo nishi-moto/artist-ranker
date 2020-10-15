@@ -12,7 +12,6 @@ The app should support the following features:
 ### Add artist
 
 * Provide a textfield for artist name and a button to add the artist Validate that name is not empty Store the artist in the application state Artist Ranking List.
-
 * Sort the list of artists, in the number of stars (if two artists are on the same number of stars any order will be ok - no need to write code for that).
 * For each artist, show the artist name + picture if present (this is updated from the artist page, see below).
 * For each artist, provide a +-button to add stars to your artist.
@@ -28,6 +27,7 @@ The app should support the following features:
 * A Save-button should store the information in the application state.
 * Provide a route directly to the artist.
 * Provide a link back to the Artist Ranking List.
+
 
 ### Additional requirements and clarifications
 
