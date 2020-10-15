@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Artist Ranker
 
-In the project directory, you can run:
 
-### `yarn start`
+This project was a weekend task for a Bootcamp. The main purpose of this project is to use React Context
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## The task
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The app should support the following features:
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Add artist
 
-### `yarn build`
+* Provide a textfield for artist name and a button to add the artist Validate that name is not empty Store the artist in the application state Artist Ranking List.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Sort the list of artists, in the number of stars (if two artists are on the same number of stars any order will be ok - no need to write code for that).
+* For each artist, show the artist name + picture if present (this is updated from the artist page, see below).
+* For each artist, provide a +-button to add stars to your artist.
+* For each artist, --button to remove start from your artist.
+* For each artist, provide a star-count, showing the number of stars given to the list.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Artist Page
 
-### `yarn eject`
+* When clicking on the artist name, the Artist Ranking List navigate to the Artist Page.
+* The user should be able to update the name.
+* The user should be able to add an URL to a picture of the artist.
+* A Save-button should store the information in the application state.
+* Provide a route directly to the artist.
+* Provide a link back to the Artist Ranking List.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Additional requirements and clarifications
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* The state of the app should only be local in the browser for one user, hence no backend is needed (nor any WebSockets).
+* You should use more than one component.
+* Keep the state in the App-component.
+* Make sure the application works by running npm install && npm start
+* Make sure that you don't have linting or test errors left in the code.
+* The purpose of the test is not styling, and we leave it up to you to decide how much styling is needed to make the app useful.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
